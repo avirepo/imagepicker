@@ -1,0 +1,22 @@
+<resources>
+
+    <declare-styleable name="MultiPickerImageView">
+        <attr name="matchHeightToWidth" format="boolean"/>
+        <attr name="matchWidthToHeight" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircularProgressBar">
+        <attr name="hasShadow" format="boolean"/>
+        <attr name="progressColor" format="color"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="progressTitle" format="string"/>
+        <attr name="titleColor" format="color"/>
+        <attr name="progressSubtitle" format="string"/>
+        <attr name="subtitleColor" format="color"/>
+        <attr name="strokeWidth" format="integer"/>
+        <attr name="progressTitleTextSize" format="dimension"/>
+        <attr name="progressSubtitleTitleTextSize" format="dimension"/>
+    </declare-styleable>
+
+
+</resources>

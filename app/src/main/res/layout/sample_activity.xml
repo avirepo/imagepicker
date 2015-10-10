@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Button
+            android:id="@+id/btn_sample_activity_pick_image"
+            android:text="Pick Single Image"
+            android:textColor="@android:color/white"
+            android:background="@android:color/darker_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <ImageView
+            android:id="@+id/imv_picked_image_single"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerInside"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/img_place_holder"
+            />
+
+    <Button
+            android:id="@+id/btn_sample_activity_pick_multi_image"
+            android:text="Pick Multiple Images"
+            android:textColor="@android:color/white"
+            android:background="@android:color/darker_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_sample_image_collection"
+            android:layout_height="150dp"
+            android:layout_width="match_parent"/>
+
+</LinearLayout>

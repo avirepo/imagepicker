@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="select_image">Select Image</string>
+    <string name="max_image_allowed">Max %s images allowed</string>
+    <string name="selected_images">%s images selected</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
+</resources>
