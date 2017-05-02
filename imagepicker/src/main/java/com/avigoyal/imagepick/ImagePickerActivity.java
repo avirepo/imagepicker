@@ -14,7 +14,12 @@ import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.*;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.avigoyal.imagepick.Utils.DialogUtil;
 import com.avigoyal.imagepick.model.GalleryImage;
 import com.avigoyal.imagepick.ui.ActionBar;
@@ -23,7 +28,11 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
 
 /**
  * <p>
@@ -254,7 +263,7 @@ public class ImagePickerActivity extends Activity implements ActionBar.ImagePick
         boolean isValid = mMaxImage == -1 || mMaxImage > mSelectedImagesList.size();
         if (!isValid) {
             String image = mMaxImage == 1 ? "image" : "images";
-            String message = String.format(Locale.getDefault(), getString(R.string.max_image_allowed), mMaxImage);
+            String message = String.format(Locale.getDefault(), getString(R.string.max_image_allowed), String.valueOf(mMaxImage));
             message = message.replace("images", image);
 
             DialogUtil.showAlertDialog(this, "Alert"
@@ -331,7 +340,7 @@ public class ImagePickerActivity extends Activity implements ActionBar.ImagePick
         String selection = getString(R.string.select_image);
         int size = mSelectedImagesList.size();
         if (size > 0) {
-            selection = String.format(getString(R.string.selected_images), size);
+            selection = String.format(getString(R.string.selected_images), String.valueOf(size));
         }
         mSelectedImages.setText(selection);
     }

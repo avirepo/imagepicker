@@ -1,24 +1,25 @@
 package android.avigoyal.imagepicker.Sample;
 
-import android.app.Activity;
 import android.avigoyal.imagepicker.R;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
 import com.avigoyal.imagepick.ImagePickerActivity;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
 
-public class ImageSampleActivity extends Activity implements View.OnClickListener {
+public class ImageSampleActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int SINGLE_CHOICE = 10001;
     private static final int MULTI_CHOICE = 10002;
     private ImageView mImageView;

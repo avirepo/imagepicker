@@ -2,53 +2,13 @@
 <items version="2" >
 
     <item
-        jar="/Users/daffomac-17/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        is-multidex="false"
+        jar="/Users/Vikas/.android/build-cache/7164937776462c5ba7a196feb97ea71ad4154178/output/jars/classes.jar"
         jumboMode="false"
-        revision="22.0.1"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-663db4bb4850bf679d6213577d99136497386cf5.jar" />
-    </item>
-    <item
-        jar="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
-        <dex dex="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/pre-dexed/debug/classes-4580d12ae51ba84f6b5dd4b90b51d29832bd7014.jar" />
-    </item>
-    <item
-        jar="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/exploded-aar/ImagePicker/imagepicker/unspecified/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="29f72ddcf520c1d3d4d61a0a646ea8c22906c86d">
-        <dex dex="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/pre-dexed/debug/classes-45ee64d2d5623c5ac456a2a5535b89eb7ca327a6.jar" />
-    </item>
-    <item
-        jar="/Users/daffomac-17/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-9594946ddb3c468001f400126218d7909d856a03.jar" />
-    </item>
-    <item
-        jar="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/pre-dexed/debug/classes-53e23ccc584e73d82e5733451b0771e7a86b97e0.jar" />
-    </item>
-    <item
-        jar="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-d472e8d0a1394bf076a1721fd4fb98f5d379ecd2.jar" />
-    </item>
-    <item
-        jar="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/Users/daffomac-17/Documents/Data/libs/ImagePicker/app/build/intermediates/pre-dexed/debug/classes-4f84003ece8b630066579e4fd06a8751e0467537.jar" />
+        optimize="true"
+        revision="25.0.2"
+        sha1="c76d273a2cd0b52a3a56c603dc7536cbc21f356e">
+        <dex dex="/Users/Vikas/Documents/Vikas/Android/UploadedRepo/ImagePicker/imagepicker/app/build/intermediates/pre-dexed/debug/classes_4b249c664cb7eedad21ad4ea62a5143e8f2ec652.jar" />
     </item>
 
 </items>

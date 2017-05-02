@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_sample_activity_pick_image"
             android:text="Pick Single Image"
             android:textColor="@android:color/white"
@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
             android:id="@+id/imv_picked_image_single"
             android:layout_gravity="center_horizontal"
             android:scaleType="centerInside"
@@ -21,7 +21,7 @@
             android:src="@drawable/img_place_holder"
             />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_sample_activity_pick_multi_image"
             android:text="Pick Multiple Images"
             android:textColor="@android:color/white"
