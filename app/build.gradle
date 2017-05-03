@@ -26,6 +26,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.avi.android:imagepicker:1.0.0'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //    compile 'com.avi.android:imagepicker:1.0.0'
+    compile project(':imagepicker')
 }

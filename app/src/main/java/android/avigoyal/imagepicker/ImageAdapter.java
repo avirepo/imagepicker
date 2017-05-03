@@ -1,4 +1,4 @@
-package android.avigoyal.imagepicker.Sample;
+package android.avigoyal.imagepicker;
 
 import android.avigoyal.imagepicker.R;
 import android.content.Context;

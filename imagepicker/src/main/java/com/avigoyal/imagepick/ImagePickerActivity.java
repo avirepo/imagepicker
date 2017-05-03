@@ -1,16 +1,15 @@
 package com.avigoyal.imagepick;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avigoyal.imagepick.Utils.DialogUtil;
+import com.avigoyal.imagepick.Utils.GalleryUtils;
+import com.avigoyal.imagepick.Utils.Utils;
 import com.avigoyal.imagepick.model.GalleryImage;
 import com.avigoyal.imagepick.ui.ActionBar;
 import com.squareup.picasso.Picasso;
@@ -39,13 +40,15 @@ import java.util.Set;
  * Image picker activity allow user to pick image from gallery and camera
  * Use #ACTION_INTENT to launch activity from eny where the app.
  * You can set action mode single image or multi image using tag ACTION_MODE in bundle
- * Using MAX_IMAGE bundle argument you can set maximum limit for image pickeing
+ * Using MAX_IMAGE bundle argument you can set maximum limit for image picking
  * </p>
+ * Before using the Activity make sure you have granted the {@link Manifest.permission#READ_EXTERNAL_STORAGE}
+ * permission
  */
 public class ImagePickerActivity extends Activity implements ActionBar.ImagePickerActionBarClickListener,
         OnRecyclerItemClickListener {
 
-    public static final String ACTION_INTENT = "com.sixthcontinent.citizen.PICK_IMAGE";
+    public static final String ACTION_INTENT = "com.avigoyal.imagepick.PICK_IMAGE";
     public static final String TAG_IMAGE_URI = "TAG_IMAGE_URI";
     public static final String ACTION_MODE = "action_mode";
     public static final String MAX_IMAGE = "max_image";
@@ -55,7 +58,6 @@ public class ImagePickerActivity extends Activity implements ActionBar.ImagePick
     public static final int PICK_MULTIPLE_IMAGE = 10001;
     private int mMaxImage = -1;
 
-    private RecyclerView mGalleryGridView;
     private GalleryGridAdapter mAdapter;
     private ArrayList<GalleryImage> mGalleyImageCol = new ArrayList<>();
 
@@ -66,7 +68,6 @@ public class ImagePickerActivity extends Activity implements ActionBar.ImagePick
     private TextView mSelectedImages;
     private ActionBar mActionBar;
     private File mFile;
-    private String mCurrentImagePath = null;
     private int mPicActionMode;
 
     @Override
@@ -74,51 +75,28 @@ public class ImagePickerActivity extends Activity implements ActionBar.ImagePick
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_image_picker);
-
+        if (!Utils.hasPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            throw new SecurityException("External Storage permission is not available");
+        }
+        mSelectedImagesList = new HashSet<>();
         mSelectedImagesContainer = (LinearLayout) findViewById(R.id.selected_photos_container);
         mSelectedImages = (TextView) findViewById(R.id.txv_total_selected_image);
         mSelectedImageEmptyMessage = (TextView) findViewById(R.id.selected_photos_empty);
         mFrameLayout = (LinearLayout) findViewById(R.id.selected_photos_container_frame);
 
-        mGalleryGridView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView galleryGridView = (RecyclerView) findViewById(R.id.recycler_view);
         GridLayoutManager manager = new GridLayoutManager(this, 3);
-        mAdapter = new GalleryGridAdapter(this, mGalleyImageCol);
-        mGalleryGridView.setLayoutManager(manager);
-        mGalleryGridView.setAdapter(mAdapter);
-        mAdapter.setListener(this);
+        mAdapter = new GalleryGridAdapter(this, mGalleyImageCol, this);
+        galleryGridView.setLayoutManager(manager);
+        galleryGridView.setAdapter(mAdapter);
 
         Intent intent = getIntent();
         mPicActionMode = intent.getIntExtra(ACTION_MODE, PICK_MULTIPLE_IMAGE);
         mMaxImage = intent.getIntExtra(MAX_IMAGE, -1);
-        setGalleryImageInGrid();
 
-        setActionBar();
-    }
-
-    private void setGalleryImageInGrid() {
-        mSelectedImagesList = new HashSet<>();
-
-        final String[] columns = {MediaStore.Images.Media.DATA, MediaStore.Images.Media._ID,
-                MediaStore.Images.ImageColumns.ORIENTATION};
-        final String orderBy = MediaStore.Images.Media._ID;
-        Cursor imageCursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, columns, null, null, orderBy);
-        while (imageCursor.moveToNext()) {
-            int columnIndex = imageCursor.getColumnIndex(MediaStore.Images.Media.DATA);
-            if (columnIndex != -1 && columnIndex < imageCursor.getColumnCount()) {
-                String stringUri = imageCursor.getString(columnIndex);
-                if (!TextUtils.isEmpty(stringUri)) {
-                    Uri uri = Uri.parse(stringUri);
-                    int orientationIndex = imageCursor.getColumnIndex(MediaStore.Images.ImageColumns.ORIENTATION);
-                    int orientation = ExifInterface.ORIENTATION_NORMAL;
-                    if (orientationIndex != -1 && orientationIndex < imageCursor.getColumnCount()) {
-                        orientation = imageCursor.getInt(orientationIndex);
-                    }
-                    mGalleyImageCol.add(new GalleryImage(uri, orientation));
-                }
-            }
-        }
-        imageCursor.close();
+        GalleryUtils.fetchGalleryImages(this, mGalleyImageCol);
         mAdapter.notifyDataSetChanged();
+        setActionBar();
     }
 
     /**
@@ -162,7 +140,6 @@ public class ImagePickerActivity extends Activity implements ActionBar.ImagePick
 
     /**
      * add selected image into the bottom layout
-     *
      * @param image GalleryImage image description and uri
      * @return if image is added in the container return true else return false
      */
@@ -204,7 +181,6 @@ public class ImagePickerActivity extends Activity implements ActionBar.ImagePick
 
     /**
      * remove image from container
-     *
      * @param image GalleryImage image description and uri which have to be removed
      * @return if image is removed return true else false
      */
@@ -297,10 +273,9 @@ public class ImagePickerActivity extends Activity implements ActionBar.ImagePick
 
     /**
      * when image is capture from camera then handle the response
-     *
      * @param requestCode RequestCode of image
-     * @param resultCode  ResultCode of intent
-     * @param data        data
+     * @param resultCode ResultCode of intent
+     * @param data data
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -359,6 +334,7 @@ public class ImagePickerActivity extends Activity implements ActionBar.ImagePick
 
     private File createImageFile() throws IOException {
         // Create an image file name
+        @SuppressLint("SimpleDateFormat")
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = Environment.getExternalStoragePublicDirectory(

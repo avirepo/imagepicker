@@ -1,6 +1,5 @@
-package android.avigoyal.imagepicker.Sample;
+package android.avigoyal.imagepicker;
 
-import android.avigoyal.imagepicker.R;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;

@@ -3,12 +3,12 @@
 
     <item
         is-multidex="false"
-        jar="/Users/Vikas/.android/build-cache/7164937776462c5ba7a196feb97ea71ad4154178/output/jars/classes.jar"
+        jar="/Users/Vikas/Documents/Vikas/Android/UploadedRepo/ImagePicker/imagepicker/imagepicker/build/intermediates/bundles/default/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="c76d273a2cd0b52a3a56c603dc7536cbc21f356e">
-        <dex dex="/Users/Vikas/Documents/Vikas/Android/UploadedRepo/ImagePicker/imagepicker/app/build/intermediates/pre-dexed/debug/classes_4b249c664cb7eedad21ad4ea62a5143e8f2ec652.jar" />
+        sha1="1916ee36c564be04973da97586c2e005182ddfb1">
+        <dex dex="/Users/Vikas/Documents/Vikas/Android/UploadedRepo/ImagePicker/imagepicker/app/build/intermediates/pre-dexed/debug/classes_77c78f674766e9004cb6200f438d6d2dcff1e714.jar" />
     </item>
 
 </items>
