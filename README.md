@@ -30,7 +30,7 @@ For Maven dependency please add following lines:
     <dependency>
       <groupId>com.avi.android</groupId>
       <artifactId>imagepicker</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
       <type>pom</type>
     </dependency>
     
