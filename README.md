@@ -22,7 +22,7 @@ Add Maven repository in your app build.gradle file
 
 Add dependency with following lines on build.gradle.
 
-        compile 'com.avi.android:imagepicker:1.0.1'
+        compile 'com.avi.android:imagepicker:1.0.0'
 
 
 For Maven dependency please add following lines:
